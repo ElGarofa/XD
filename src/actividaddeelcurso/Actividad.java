@@ -13,9 +13,22 @@ public class Actividad {
     int[] variable2= {
     		896, 727, 951, 910, 143, 261, 301, 460, 903, 461, 319, 302, 396, 649, 332, 624, 319, 252, 581, 91, 91, 628, 590, 515, 862, 918, 614, 521, 289, 19, 369, 194, 109, 556, 489, 960, 391, 853, 499, 958, 661, 754, 160, 823, 890, 200, 454, 524, 736, 255, 283, 940, 959, 78, 558, 335, 145, 645, 339, 86, 726, 254, 649, 895, 481, 582, 777, 988, 174, 455, 187, 510, 394, 677, 489, 861, 32, 160, 951, 265, 148, 401, 990, 168, 798, 85, 443, 709, 514, 198, 569, 45, 152, 886, 220, 668, 891, 245, 156, 480, 987, 814, 175, 737, 81, 66, 156, 842, 672, 952, 362, 251, 366, 248, 234, 656, 208, 160, 139, 936, 298, 826, 877, 996, 742, 242, 698, 464, 146, 327, 25, 814, 953, 64, 452, 243, 411, 813, 202, 55, 560, 584, 235, 712, 352, 297, 425, 63, 882, 239, 41, 40, 623, 964, 637, 255, 879, 205, 21, 143, 300, 308, 744, 675, 794, 892, 685, 417, 860, 952, 801, 414, 173, 476, 837, 656, 280, 203, 720, 867, 230, 250, 984, 235, 482, 754, 467, 576, 101, 762, 462, 168, 999, 711, 206, 537, 683, 730, 159, 744};
     
-    SepararLista numero1 = new SepararLista(variable1); 
-    System.out.println(numero1.getParte1());
-    System.out.println(numero1.getParte2());
+    SepararLista numero1 = new SepararLista(variable1);
+    
+//    System.out.println(numero1.getParte1());
+//    System.out.println(numero1.getParte2());
+    
+    SepararLista numero2 = new SepararLista(variable2);
+    
+    Hilo1 variable3 = new Hilo1(numero1.getParte1(),numero2.getParte1());
+    
+    Hilo1 variable4 = new Hilo1(numero1.getParte2(),numero2.getParte2());
+    
+    variable3.start();
+    
+    variable4.start();
+    
+    System.out.println(variable3.get_acumulador()+variable4.get_acumulador());
     
     }
 

@@ -4,7 +4,7 @@ public class Hilo1 extends Thread  {
 
 	public int [] parte1;
 	public int [] parte2;
-	public int acumulador=0;
+	public long acumulador=0l;
 	
 	public Hilo1(int [] parte1 , int [] parte2) {
 		
@@ -12,7 +12,7 @@ public class Hilo1 extends Thread  {
 	this.parte2 = parte2;
 			
 	}
-	public void run() {
+	public synchronized void run() {
 	 
 		
 		if (this.parte1.length==this.parte2.length) {
@@ -23,12 +23,20 @@ public class Hilo1 extends Thread  {
 			
 			}
 		}
-	
+		
+		this.notify();
 	
 	}
 
-	public int get_acumulador(){
+	public synchronized long get_acumulador(){
+		try {
+			this.wait();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return this.acumulador;
+		
 	}
 }
 
